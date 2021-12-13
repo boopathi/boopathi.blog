@@ -15,7 +15,7 @@ const siteMetadata = {
   twitter: 'https://twitter.com/heisenbugger',
   locale: 'en-US',
   analytics: {
-    googleAnalyticsId: '', // e.g. UA-000000-2 or G-XXXXXXX
+    googleAnalyticsId: 'UA-22586438-7', // e.g. UA-000000-2 or G-XXXXXXX
   },
   newsletter: {},
   comment: {
