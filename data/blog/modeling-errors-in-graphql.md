@@ -5,7 +5,12 @@ tags:
   - GraphQL
   - Design
 draft: false
+summary: GraphQL excels in modeling data requirements. Modeling errors as schema types in GraphQL is required for certain kinds of errors. In this post, let's analyze some cases where errors contain structured data apart from the message and the location information.
 ---
+
+Cross posted -
+
+[Zalando Engineering Blog - Modeling Errors in GraphQL](https://engineering.zalando.com/posts/2021/04/modeling-errors-in-graphql.html)
 
 GraphQL is a great language for writing data requirements in a declartive fashion. It gives us a clear and a well-defined concept of nullability constraints and error propagation. In this post, let's discuss how GraphQL lacks in certain places with regards to errors and how we can model those errors to fit some of our use-cases.
 

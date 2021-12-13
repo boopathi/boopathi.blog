@@ -5,7 +5,7 @@ tags:
   - GraphQL
   - Design
 draft: false
-summary: ~
+summary: In this post, I cover the topics — GraphQL persisted queries at Zalando and how we define and think about different levels of stability of our GraphQL schema.
 ---
 
 Welcome to yet another post about GraphQL. In this post, I cover the topics — GraphQL persisted queries at Zalando and how we define and think about different levels of stability of our GraphQL schema.

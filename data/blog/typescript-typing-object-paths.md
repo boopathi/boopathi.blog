@@ -5,6 +5,7 @@ tags:
   - TypeScript
   - JavaScript
 draft: false
+summary: In this post, I'm going to use some features of TypeScript that are often considered "advanced". In the first section, I'll mention most of the TypeScript features I'm going to use and also point to their documentation for references. The post is about how we can get stricter types for Object Paths for different use-cases.
 ---
 
 In this post, I'm going to use some features of TypeScript that are often considered "advanced". In the first section, I'll mention most of the TypeScript features I'm going to use and also point to their documentation for references. The post is about how we can get stricter types for Object Paths for different use-cases.

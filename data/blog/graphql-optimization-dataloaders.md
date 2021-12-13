@@ -6,6 +6,7 @@ tags:
   - Optimization
   - JavaScript
 draft: false
+summary: In the previous posts, we saw how to optimize the data transfer between the GraphQL server and a data provider - backend server. In this post, I'm going to talk about how we can handle the complexities we discussed in previous posts with a Dataloader
 ---
 
 This post is part of a series of posts about optimizations in GraphQL servers. This post requires a basic understanding of GraphQL. If you've not read my previous posts in this series, please read Part [1](https://boopathi.blog/graphql-optimization-lookaheads/) and [2](https://boopathi.blog/graphql-optimization-field-filtering/) before continuing.

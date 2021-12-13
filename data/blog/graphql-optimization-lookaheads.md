@@ -6,6 +6,7 @@ tags:
   - Optimization
   - JavaScript
 draft: false
+summary: GraphQL offers a way to optimize the data between a client and a server. We can use the declarative nature of a GraphQL query to perform lookaheads. Lookaheads provide us a way to optimize the data between the GraphQL server and a backend data provider - like a database or another server that can return partial responses.
 ---
 
 This post is the first part of a series about optimizations in a GraphQL server we made at [Zalando](https://www.zalando.de). This post requires a basic understanding of a GraphQL server - especially its resolvers.

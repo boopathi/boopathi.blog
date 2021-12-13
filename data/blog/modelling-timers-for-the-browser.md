@@ -5,6 +5,7 @@ tags:
   - browser
   - timer
 draft: false
+summary: This post is about how to effectively model timers for the web and go through the shortcomings of each of those models.
 ---
 
 Timers are one of the primary entities of the web. One of the common forms of timers shown to the user is the Countdown timer. In this post, we shall discuss about how to effectively model it and go through the shortcomings of each of those models.
