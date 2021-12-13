@@ -29,7 +29,7 @@ As a recap from previous posts, LookAheads are a concept of knowing what the nex
 
 Let's start with an example as usual —
 
-```gql
+```graphql
 query {
   product(id: "foo") {
     name

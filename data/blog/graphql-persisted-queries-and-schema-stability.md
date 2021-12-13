@@ -70,7 +70,7 @@ In the previous topic, we learnt about the power of persisted queries controlled
 
 For this we use [GraphQL directives](https://graphql.org/learn/queries/#directives) —
 
-```gql
+```graphql
 directive @draft on FIELD_DEFINITION
 ```
 
@@ -93,7 +93,7 @@ export function draftRule(context) {
 
 This is an example implementation of the rule which you can pass to the [GraphQL validation](https://graphql.org/learn/validation/). The usage in the schema would look like —
 
-```gql
+```graphql
 type Product {
   fancyNewField: FancyNewType @draft
 }
@@ -121,7 +121,7 @@ One obvious option is to remove the draft. But we do not restrict who can persis
 
 Here, we introduce two new directives which act as access control for fields in production. The `@component` directive, and `@allowedFor` directive —
 
-```gql
+```graphql
 directive @component(name: String!) on QUERY
 directive @allowedFor(componentNames: [String!]!) on FIELD_DEFINITION
 ```
@@ -132,7 +132,7 @@ These two directives complement each other where one is used in the query and th
 
 For example,
 
-```gql
+```graphql
 type Product {
   fancyProp: String @allowedFor(componentNames: ["web-product-card"])
 }
@@ -140,7 +140,7 @@ type Product {
 
 and a query product card —
 
-```gql
+```graphql
 query productCard @component(name: "web-product-card") {
   product {
     fancyProp

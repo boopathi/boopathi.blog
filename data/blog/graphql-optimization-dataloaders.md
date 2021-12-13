@@ -57,7 +57,7 @@ We provide the dataloader an implementation for handling an array of inputs that
 
 When a Product appears in multiple parts of the same GraphQL query, each of those will create separate requests to the backend. For example, let's consider this simple GraphQL query -
 
-```gql
+```graphql
 query {
   foo: product(id: "foo") {
     ...productCardFields
@@ -110,7 +110,7 @@ Here, in the above code-block, I've highlighted a problem - each of the `product
 
 Let's go back to an example and understand why we should handle this -
 
-```gql
+```graphql
 query {
   foo: product(id: "foo") {
     name

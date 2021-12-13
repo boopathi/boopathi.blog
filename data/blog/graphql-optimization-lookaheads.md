@@ -70,7 +70,7 @@ Photo by [Stéphane Vermeulin](https://unsplash.com/@svermeulin?utm_source=ghost
 
 Let's leverage these partial responses and use it in the GraphQL server. When resolving the product, we must know what the next fields are within this product, (or) we need to **look ahead** in the query to get the sub-fields of the product.
 
-```gql
+```graphql
 query {
   product(id: "foo") {
     name

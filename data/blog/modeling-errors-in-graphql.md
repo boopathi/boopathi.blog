@@ -126,7 +126,7 @@ For example, the mutation discussed previously can be modeled like this —
 1. Result type is a `union` of Success, Error.
 1. Error schema contains necessary error info — like translated messages, etc...
 
-```gql
+```graphql
 type Mutation {
   register(email: String!, password: String!): RegisterResult
 }
@@ -191,7 +191,7 @@ Errors convey information — either to Consumer or Customer. If the error is co
 
 In the 404 Not Found case, if we had modeled the errors as schema types, it would make the schema less usable. Let's take a product look-up use-case —
 
-```gql
+```graphql
 {
   product(id: "foo") {
     ... on ProductSuccess { }
@@ -220,7 +220,7 @@ Naming is half the battle in GraphQL. Since the name `error` is already taken by
 
 The above register schema with the problem type would look like this —
 
-```gql
+```graphql
 type Mutation {
   register(email: String!, password: String!): RegisterResult
 }
