@@ -6,13 +6,11 @@ tags:
   - Optimization
   - JavaScript
   - Sensitive Data
-draft: true
+draft: false
 summary: Metrics, Logging, and Tracing are some primary forms of monitoring we use in our services. In this post, I talk about how we can leverage the power of GraphQL to prevent sensitive information ending up in these monitoring tools.
 ---
 
-In this post, we will understand the power of declarative nature of GraphQL to solve a problem that requires its own discussions, audits, and other forms of dedicated time -- Monitoring.
-
-Metrics collection, Logging, and Tracing are some primary forms of monitoring we implement in all services. In the logs, traces, or metrics, we want enough information to understand failures so that we are able to fix the bugs that caused those failures.
+In this post, we will focus on the declarative nature of GraphQL to solve the leakage of sensitive data to monitoring tools. Metrics collection, Logging, and Tracing are some primary forms of monitoring we implement in all services. In the logs, traces, or metrics, we want enough information to understand failures so that we are able to fix the bugs that caused those failures.
 
 ## Overview
 
@@ -259,9 +257,9 @@ The implementation of the linter rule is certainly not going to fit within a blo
 
 ## Conclusion
 
-Along with the proactive measures of preventing leak of sensitive data in our monitoring platforms, we also must focus on the reactive measures. The goal of this blog post is to leverage the technologies and build tools around those technologies to proactively prevent bugs. The reactive measures involve a lot around audits, policies, and contracts drafted by the company or organization. The reactive measures are probably more important than the proactive measures as we assume all software has bugs.
+Along with the proactive measures of preventing leak of sensitive data in our monitoring platforms, we also must focus on the reactive measures. The reactive measures involve a lot around audits, policies, and contracts drafted by the company or organization. The reactive measures are probably more important than the proactive measures as we must assume all software has bugs. With these tools and techniques we discussed above, mitigation using 'reactive measures' becomes simpler and simpler.
 
-I hope you learned a bit more about GraphQL directives from this blog post. Please share how you use GraphQL directives in your projects.
+I hope you learned a bit more about GraphQL directives from this blog post. Please do share how you use GraphQL directives in your projects.
 
 As always, if you have any doubts or comments or questions or fixes for this post, please feel free to tweet to me at [@heisenbugger](https://twitter.com/heisenbugger).
 
