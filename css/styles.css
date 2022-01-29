@@ -1,0 +1,6 @@
+.prose h1 > a,
+.prose h2 > a,
+.prose h3 > a,
+.prose h4 > a {
+  @apply text-inherit no-underline font-semibold;
+}

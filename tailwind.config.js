@@ -69,7 +69,7 @@ module.exports = {
               content: 'none',
             },
             details: {
-              backgroundColor: theme('colors.gray.100'),
+              backgroundColor: theme('colors.transparent'),
               paddingLeft: '4px',
               paddingRight: '4px',
               paddingTop: '2px',
@@ -125,7 +125,7 @@ module.exports = {
               backgroundColor: theme('colors.gray.800'),
             },
             details: {
-              backgroundColor: theme('colors.gray.800'),
+              backgroundColor: theme('colors.transparent'),
             },
             hr: { borderColor: theme('colors.gray.700') },
             'ol li::marker': {

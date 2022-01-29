@@ -6,7 +6,7 @@ tags:
   - Optimization
   - JavaScript
 draft: true
-summary: asdf
+summary: Metrics, Logging, and Tracing are some primary forms of monitoring we use in our services. In this post, I talk about how we can leverage the power of GraphQL to prevent sensitive information ending up in these monitoring tools.
 ---
 
 In this post, we will understand the power of declarative nature of GraphQL to solve a problem that requires its own discussions, audits, and other forms of dedicated time -- Monitoring.
@@ -88,7 +88,7 @@ We are going to approach protecting sensitive data in two forms,
 
 ## Proactive measures
 
-Acting before we identify a data leak of logging sensitive data is important in our server setup. Let's use the power of GraphQL to take these proactive measures. In the first section of the post, we discussed GraphQL directives. How can we leverage GraphQL directives to prevent sensitive data from ending up in our logs?
+Acting before we identify a data leak of logging sensitive data is important in our server setup.
 
 ### Schema modeling
 
@@ -100,6 +100,7 @@ For example, consider the following design --
 # not preferred
 type Query {
   customer(id: ID!): Customer
+  healthStats(id: ID!): HealthStats
 }
 ```
 
@@ -109,12 +110,13 @@ In this model, the field takes in the customer ID as the input. This is a bad de
 # preferred
 type Query {
   customer: Customer
+  healthStats: HealthStats
 }
 ```
 
-Where do I get the ID from? Every request that asks for customer's information must already be authenticated. The token that passes the authentication must have this information along with the privileges or scopes the request can access. You can get the customer ID from the decoded token information.
+Where do I get the ID from? Every request that asks for customer's information must already be authenticated. The token that passes the authentication must have this information along with the privileges or scopes the request can access. You can get the customer ID from the **decoded token** information.
 
-### Marking sensitive inputs with a directive
+### `@sensitive` directive
 
 We can let the user mark certain input arguments in the GraphQL query to be sensitive. But we cannot always rely on the user of the API to make this decision. So we have to annotate our server declaring which inputs are sensitive -- i.e., in the schema directly. We end up with the following directive --
 
@@ -140,9 +142,127 @@ After defining this new directive, it's time to start marking the different part
 
 **How do we prevent this from logging?**
 
-\*\*
+Arguments marked with the `@sensitive` directive can be read from the AST of the query during execution. All we need to do is go through the AST of the query and compare it with the corresponding schema types. In GraphQL-JS there is a function that offers this capability in-built. While the `visit` function offers a way to visit the nodes of the AST of either the schema or the query, visiting them in a way where correlating the variable with an argument seems not straight-forward.
 
-## Reactive measures
+Fortunately, there is a simpler alternative -- i.e., to use `validate` function. The `validate` function takes both the query document AST and the built schema as input and offers the same visitor pattern that `visit` uses.
+
+### `getSensitiveVariables`
+
+1. We use the visitor pattern and visit all `Variable` nodes in the query. Note: Variable corresponds to the Variable usage, while `VariableDefinition` corresponds to the declaration at the query level.
+
+   ```graphql
+   query (
+     $idVar: ID! # <- $idVar is VariableDefinition
+   ) {
+     product(id: $idVar) # <- $idVar is Variable
+   }
+   ```
+
+1. The visitors receive a `context`. The context has access to the schema and has many helpers to get to different parts of the schema with ease.
+   ```ts
+   validate(document, schema, {
+     Variable(context) {},
+   })
+   ```
+1. `context.getArgument` inside the _Variable_ visitor would return the definition of the argument. This method returns the argument definition in the **schema** -- `id: ID!`. This is the connection between the schema and query we discussed previously.
+   ```graphql
+   type Query {
+     product(id: ID!): Product
+     #       -------
+     # context.getArgument returns this
+     # argument defintion `id: ID!` in schema
+   }
+   ```
+1. Once we made that connection from the query to the schema, we can go through the argument's (return value of `context.getArgument`) AST. This AST will have the directives.
+   ```ts
+   context.getArgument()?.astNode?.directives
+   ```
+1. We just go over the list of directives in this argument and check if we use `@sensitive`.
+
+The complete implementation using GraphQL-JS would look like this --
+
+<details>
+<summary>Click to expand</summary>
+
+```ts
+import { GraphQLSchema, DocumentNode, validate } from 'graphql'
+
+const hasSensitiveDirective = (directive) => directive.name.value === 'sensitive'
+
+function getSensitiveVariables(document: DocumentNode, schema: GraphQLSchema) {
+  const sensitiveVariables: string[] = []
+
+  validate(schema, document, [
+    (context) => ({
+      Variable(node) {
+        const directives = context.getArgument()?.astNode?.directives
+        if (directives?.some(hasSensitiveDirective)) {
+          sensitiveVariables.push(node.name.value)
+        }
+      },
+    }),
+  ])
+
+  return sensitiveVariables
+}
+```
+
+</details>
+
+### `getLoggableVariables`
+
+Now, we have the list of sensitive variables. While logging, we can use this list to remove all the sensitive variables just before logging. An example implementation of the logger --
+
+<details>
+<summary>Click to expand</summary>
+
+```ts
+type Variables = {
+  [key: string]: any
+}
+function getLoggableVariables(variables: Variables, sensitive: string[]) {
+  const loggableVariables: Variables = {}
+  let hasLoggableVariables = false
+
+  for (let name in variables) {
+    if (!sensitiveVariableNames.includes(name)) {
+      hasLoggableVariables = true
+      loggableVariables[name] = variables[name]
+    }
+  }
+
+  if (hasLoggableVariables) return loggableVariables
+  return
+}
+```
+
+</details>
+
+### Enforcing `@sensitive` heuristics
+
+The sensitive directive is useful to mark input arguments in the schema. But, it must be manually done. We are dealing with sensitive data leaked to our logging and monitoring platforms. Based on our business and products, we can already identify a list of potential sensitive names that will be used in the schema.
+
+This knowledge enables us to again use the declarative nature of GraphQL to build more tools -- i.e., a linter that checks for certain names in argument and enforces the usage of `@sensitive` directive.
+
+A rough list of fields (incomplete) for an ecommerce platform could look like this --
+
+```
+email,password,phone,firstname,lastname,street,zip,bank,account,owner,orderid
+```
+
+Using the schema-linter project -- [graphql-schema-linter][graphql_schema_linter], we can write a rule that checks if the argument contains these above listed names. If it does, and the argument does not contain the `@sensitive` annotation / directive, we fail the lint.
+
+The implementation of the linter rule is certainly not going to fit within a blog post. So, here is a gist to this implementation -- [sensitive-heuristics.js][sensitive_heuristics]
+
+## Conclusion
+
+Along with the proactive measures of preventing leak of sensitive data in our monitoring platforms, we also must focus on the reactive measures. The goal of this blog post is to leverage the technologies and build tools around those technologies to proactively prevent bugs. The reactive measures involve a lot around audits, policies, and contracts drafted by the company or organization. The reactive measures are probably more important than the proactive measures as we assume all software has bugs.
+
+I hope you learned a bit more about GraphQL directives from this blog post. Please share how you use GraphQL directives in your projects.
+
+As always, if you have any doubts or comments or questions or fixes for this post, please feel free to tweet to me at [@heisenbugger](https://twitter.com/heisenbugger).
 
 [sdl]: https://graphql.org/learn/schema/
 [directive_locations]: https://spec.graphql.org/October2021/#DirectiveLocations
+[graphql_schema_linter]: https://github.com/cjoudrey/graphql-schema-linter
+[sensitive_heuristics]: https://gist.github.com/boopathi/82999b851b484911fe6f86832733c921
