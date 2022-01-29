@@ -1,10 +1,11 @@
 ---
 title: How to avoid logging sensitive data in GraphQL
-date: '2022-01-27'
+date: '2022-01-29'
 tags:
   - GraphQL
   - Optimization
   - JavaScript
+  - Sensitive Data
 draft: true
 summary: Metrics, Logging, and Tracing are some primary forms of monitoring we use in our services. In this post, I talk about how we can leverage the power of GraphQL to prevent sensitive information ending up in these monitoring tools.
 ---
@@ -12,6 +13,10 @@ summary: Metrics, Logging, and Tracing are some primary forms of monitoring we u
 In this post, we will understand the power of declarative nature of GraphQL to solve a problem that requires its own discussions, audits, and other forms of dedicated time -- Monitoring.
 
 Metrics collection, Logging, and Tracing are some primary forms of monitoring we implement in all services. In the logs, traces, or metrics, we want enough information to understand failures so that we are able to fix the bugs that caused those failures.
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={3}/>
 
 ## Logging variables
 
@@ -86,11 +91,9 @@ We are going to approach protecting sensitive data in two forms,
 1. Proactive measures
 1. Reactive measures
 
-## Proactive measures
+Acting before we identify a data leak of logging sensitive data is important in our server setup. For the scope of this blog post, we will focus only on the technical aspects under proactive measures related to GraphQL.
 
-Acting before we identify a data leak of logging sensitive data is important in our server setup.
-
-### Schema modeling
+## Schema modeling
 
 GraphQL is widely used to build UI. So, it's often the case in many business applications that the current user is always the context of the entire API usage. In other words, if there is no case for a client to get some other user's data, then this should reflect in the modeling.
 
@@ -116,7 +119,7 @@ type Query {
 
 Where do I get the ID from? Every request that asks for customer's information must already be authenticated. The token that passes the authentication must have this information along with the privileges or scopes the request can access. You can get the customer ID from the **decoded token** information.
 
-### `@sensitive` directive
+## `@sensitive` directive
 
 We can let the user mark certain input arguments in the GraphQL query to be sensitive. But we cannot always rely on the user of the API to make this decision. So we have to annotate our server declaring which inputs are sensitive -- i.e., in the schema directly. We end up with the following directive --
 
@@ -140,7 +143,7 @@ type Mutation {
 
 After defining this new directive, it's time to start marking the different parts of the schema. Identification and adding this directive is only half the solution.
 
-**How do we prevent this from logging?**
+### How do we prevent this from logging?
 
 Arguments marked with the `@sensitive` directive can be read from the AST of the query during execution. All we need to do is go through the AST of the query and compare it with the corresponding schema types. In GraphQL-JS there is a function that offers this capability in-built. While the `visit` function offers a way to visit the nodes of the AST of either the schema or the query, visiting them in a way where correlating the variable with an argument seems not straight-forward.
 
