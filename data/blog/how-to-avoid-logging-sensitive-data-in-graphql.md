@@ -263,7 +263,5 @@ I hope you learned a bit more about GraphQL directives from this blog post. Plea
 
 As always, if you have any doubts or comments or questions or fixes for this post, please feel free to tweet to me at [@heisenbugger](https://twitter.com/heisenbugger).
 
-[sdl]: https://graphql.org/learn/schema/
-[directive_locations]: https://spec.graphql.org/October2021/#DirectiveLocations
 [graphql_schema_linter]: https://github.com/cjoudrey/graphql-schema-linter
 [sensitive_heuristics]: https://gist.github.com/boopathi/82999b851b484911fe6f86832733c921
