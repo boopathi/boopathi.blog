@@ -89,7 +89,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                     <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400 text-center sm:text-left xl:text-right">
                       Tags
                     </h2>
-                    <div className="flex flex-wrap text-center gap-3 my-3">
+                    <div className="flex flex-wrap items-center justify-center text-center gap-3 my-3">
                       {tags.map((tag) => (
                         <Tag key={tag} text={tag} />
                       ))}
