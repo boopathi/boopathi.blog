@@ -19,8 +19,7 @@ module.exports = {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        primary: colors.teal,
-        gray: colors.neutral,
+        primary: colors.sky,
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -54,7 +53,7 @@ module.exports = {
               backgroundColor: theme('colors.gray.800'),
             },
             code: {
-              color: theme('colors.pink.500'),
+              color: theme('colors.gray.700'),
               backgroundColor: theme('colors.gray.100'),
               paddingLeft: '4px',
               paddingRight: '4px',
@@ -118,10 +117,14 @@ module.exports = {
             'h4,h5,h6': {
               color: theme('colors.gray.100'),
             },
+            'h1 > a, h2 > a, h3 > a, h4 > a, h5 > a': {
+              color: `${theme('colors.gray.300')} !important`,
+            },
             pre: {
               backgroundColor: theme('colors.gray.800'),
             },
             code: {
+              color: theme('colors.gray.300'),
               backgroundColor: theme('colors.gray.800'),
             },
             details: {
