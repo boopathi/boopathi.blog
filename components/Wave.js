@@ -4,7 +4,7 @@ export default function Wave() {
       <div className="h-24 bg-sky-200 dark:bg-sky-900 absolute -z-10 min-w-full"></div>
       <div className="top-24 bg-sky-200 dark:bg-sky-900 absolute min-w-full -z-10 ">
         <svg
-          className="waves"
+          className="relative w-full h-32 min-h-[100px] max-h-[150px]"
           viewBox="0 24 150 28"
           preserveAspectRatio="none"
           shapeRendering="auto"
