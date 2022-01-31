@@ -1,3 +1,8 @@
+// Source: https://codepen.io/goodkatz/pen/LYPGxQz
+// Modified to
+// 1. use tailwind styles
+// 2. handle dark mode and light mode colors
+// 3. background effect instead of foreground
 export default function Wave() {
   return (
     <>
