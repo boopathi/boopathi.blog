@@ -66,12 +66,12 @@ export default function ListLayout({
               <li key={slug} className="py-12">
                 <article>
                   <div className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
-                    <dl>
+                    <dl className="flex gap-x-3 xl:flex-col">
                       <dt className="sr-only">Published on</dt>
                       <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                         <time dateTime={date}>{formatDate(date)}</time>
                       </dd>
-
+                      <span className="xl:hidden">{'·'}</span>
                       <dt className="sr-only">Reading Time</dt>
                       <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                         <span>{Math.round(readingTime.minutes)} min read</span>
