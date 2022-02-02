@@ -6,7 +6,7 @@ tags:
 draft: false
 summary: This post gives an introduction to GraphQL directives, how to create custom ones, explains the different locations where directives can be used, and goes over some use-cases of directives.
 images:
-  - /static/blog/graphql-directives-an-introduction/twitter-card.jpg
+  - /static/blog/graphql-directives-an-introduction/twitter-card.png
 ---
 
 In GraphQL, if you've used the syntax that starts with `@`, for example, `@foo`, then you've used GraphQL directives. This post is about creating custom directives and exploring some use-cases of these custom directives.
