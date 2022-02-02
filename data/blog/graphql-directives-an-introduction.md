@@ -3,7 +3,7 @@ title: GraphQL Directives - an introduction
 date: '2022-02-02'
 tags:
   - GraphQL
-draft: true
+draft: false
 summary: This post gives an introduction to GraphQL directives, how to create custom ones, explains the different locations where directives can be used, and goes over some use-cases of directives.
 ---
 
