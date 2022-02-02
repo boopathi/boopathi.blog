@@ -31,41 +31,40 @@ async function main(args) {
       height: 618,
     },
   })
-  const page = await browser.newPage()
-  await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: 'dark' }])
+
   const posts = getAllPosts()
 
-  for (const post of posts) {
+  const promises = posts.map(async (post) => {
+    const page = await browser.newPage()
+    await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: 'dark' }])
     const targetDir = path.join(__dirname, `../public/static/blog/${post}`)
     const targetImage = path.join(targetDir, '/twitter-card.png')
-    if (fileExists(targetImage) && !force) continue
+    if (fileExists(targetImage) && !force) return
 
     if (!skipImageGeneration) {
       await openPostInBrowser(page, post)
       await removeUnnecessaryElements(page)
-      console.log('waiting for animation to progress')
       await delayRandom(1000, 2000)
-
       await screenshot(page, post, targetDir, targetImage)
+      console.log('screenshot saved to', path.relative(path.join(__dirname, '../'), targetImage))
     }
 
     if (!skipPostUpdate) {
       updatePost(post)
     }
-  }
+  })
+
+  await Promise.all(promises)
 
   await browser.close()
 }
 
 async function openPostInBrowser(page, post) {
-  console.log('opening post', post)
   await page.goto(`http://localhost:3000/${post}`)
-  console.log('waiting for network idle')
   await page.waitForNetworkIdle()
 }
 
 async function removeUnnecessaryElements(page) {
-  console.log('preparing page for screenshot')
   const header = await page.$('header')
   await header.evaluate((node) => (node.style = 'visibility:hidden'))
   const datetime = await page.$('time')
@@ -75,13 +74,11 @@ async function removeUnnecessaryElements(page) {
 }
 
 async function screenshot(page, post, targetDir, targetImage) {
-  console.log('capturing screenshot')
   mkdirp.sync(targetDir)
   await page.screenshot({
     clip: { x: 0, y: 48, width: 800, height: 418 },
     path: targetImage,
   })
-  console.log('screenshot saved to', path.relative(path.join(__dirname, '../'), targetImage))
 }
 
 function updatePost(post, targetImage) {
@@ -119,7 +116,6 @@ function fileExists(file) {
 
 function delayRandom(min, max) {
   const rand = Math.floor(Math.random() * (max - min + 1) + min)
-  console.log(rand)
   return new Promise((resolve) => setTimeout(resolve, rand))
 }
 
