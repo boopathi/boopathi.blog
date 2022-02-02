@@ -65,11 +65,12 @@ async function openPostInBrowser(page, post) {
 }
 
 async function removeUnnecessaryElements(page) {
-  const header = await page.$('header')
+  // source: LayoutWrapper.js
+  const header = await page.$('#page-top-header')
   await header.evaluate((node) => (node.style = 'visibility:hidden'))
-  const datetime = await page.$('time')
+  const datetime = await page.$('#post-time')
   await datetime.evaluate((node) => (node.style = 'visibility:hidden'))
-  const prose = await page.$('.prose')
+  const prose = await page.$('#post-content')
   await prose.evaluate((node) => (node.style = 'visibility:hidden'))
 }
 

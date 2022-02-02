@@ -32,7 +32,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               <div>
                 <PageTitle>{title}</PageTitle>
               </div>
-              <dl className="space-y-10">
+              <dl className="space-y-10" id="post-time">
                 <div className="flex gap-x-3 justify-center">
                   <dt className="sr-only">Published on</dt>
                   <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
@@ -103,7 +103,10 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                 )}
               </dd>
             </dl>
-            <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-3 xl:row-span-2">
+            <div
+              id="post-content"
+              className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-3 xl:row-span-2"
+            >
               <div className="pt-10 pb-8 prose dark:prose-dark max-w-none m-auto max-w-3xl">
                 {children}
               </div>
