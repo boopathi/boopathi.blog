@@ -81,9 +81,9 @@ directive @foo on LOCATION_IN_FIRST_COLUMN
 
 | Directive Location  | Example                        |
 | ------------------- | ------------------------------ |
-| QUERY               | `query @foo {}`                |
-| MUTATION            | `mutation @foo {}`             |
-| SUBSCRIPTION        | `subscription @foo {}`         |
+| QUERY               | `query name @foo {}`           |
+| MUTATION            | `mutation name @foo {}`        |
+| SUBSCRIPTION        | `subscription name @foo {}`    |
 | FIELD               | `query { product @foo {} }`    |
 | FRAGMENT_DEFINITION | `fragment x on Query @foo { }` |
 | FRAGMENT_SPREAD     | `query { ...x @foo }`          |
