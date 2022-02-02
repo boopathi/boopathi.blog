@@ -4,7 +4,15 @@ date: '2020-03-01'
 tags:
   - git
 draft: false
-summary: If you've some file committed to a git repository, and you'd like to remove it, simply deleting the file and committing it again will not remove the file completely. It still lies in the git history. If you want to remove a file from git history, the history needs to be re-written. This post is about exactly doing that - rewriting git history such that the file to be removed stays removed.
+summary: >-
+  If you've some file committed to a git repository, and you'd like to remove
+  it, simply deleting the file and committing it again will not remove the file
+  completely. It still lies in the git history. If you want to remove a file
+  from git history, the history needs to be re-written. This post is about
+  exactly doing that - rewriting git history such that the file to be removed
+  stays removed.
+images:
+  - /static/blog/removing-sensitive-files-from-git/twitter-card.png
 ---
 
 If you've some file committed to a git repository, and you'd like to remove it, simply deleting the file and committing it again will not remove the file completely. It still lies in the git history. If you want to remove a file from git history, the history needs to be re-written.

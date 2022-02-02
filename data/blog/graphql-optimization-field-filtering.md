@@ -6,7 +6,13 @@ tags:
   - Optimization
   - JavaScript
 draft: false
-summary: In this post, we are going to take a look at one of the primary optimizations we can achieve by using GraphQL Lookaheds - Field filtering. We will dive deep into what the different complexities are for applying lookaheads to optimize data between GraphQL server and a backend server.
+summary: >-
+  In this post, we are going to take a look at one of the primary optimizations
+  we can achieve by using GraphQL Lookaheds - Field filtering. We will dive deep
+  into what the different complexities are for applying lookaheads to optimize
+  data between GraphQL server and a backend server.
+images:
+  - /static/blog/graphql-optimization-field-filtering/twitter-card.png
 ---
 
 This is the part-2 of a series of posts about optimizations in GraphQL. This post requires a basic understanding of [GraphQL](https://graphql.org). If you've not read my previous post, please read [Part 1: Lookaheads](https://boopathi.blog/graphql-optimization-lookaheads/) before continuing.

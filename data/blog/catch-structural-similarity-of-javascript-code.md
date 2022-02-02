@@ -4,7 +4,13 @@ date: '2019-11-06'
 tags:
   - JavaScript
 draft: false
-summary: This post is about how do we detect some of the cases where we have possibly repeated code in the same project or across multiple projects. This code if necessary can be extracted into a common module so as to avoid fixing bugs multiple times.
+summary: >-
+  This post is about how do we detect some of the cases where we have possibly
+  repeated code in the same project or across multiple projects. This code if
+  necessary can be extracted into a common module so as to avoid fixing bugs
+  multiple times.
+images:
+  - /static/blog/catch-structural-similarity-of-javascript-code/twitter-card.png
 ---
 
 Project Source code: [https://github.com/vigneshshanmugam/js-cpa](https://github.com/vigneshshanmugam/js-cpa)

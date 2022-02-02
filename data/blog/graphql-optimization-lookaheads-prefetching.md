@@ -6,7 +6,13 @@ tags:
   - Optimization
   - JavaScript
 draft: false
-summary: In previous posts, we saw how to optimize data between GraphQL Server and a backend server using the concepts of lookaheads and field filtering. In this post, we are going to leverage look aheads for other forms of optimization - especially prefetching resources.
+summary: >-
+  In previous posts, we saw how to optimize data between GraphQL Server and a
+  backend server using the concepts of lookaheads and field filtering. In this
+  post, we are going to leverage look aheads for other forms of optimization -
+  especially prefetching resources.
+images:
+  - /static/blog/graphql-optimization-lookaheads-prefetching/twitter-card.png
 ---
 
 This post is a part of the series about optimizations in GraphQL servers. This post requires a basic understanding of GraphQL — especially the resolvers. If you've not read my previous posts in this series, I recommend you to read them.

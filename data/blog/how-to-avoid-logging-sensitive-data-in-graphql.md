@@ -7,7 +7,12 @@ tags:
   - JavaScript
   - Sensitive Data
 draft: false
-summary: Metrics, Logging, and Tracing are some primary forms of monitoring we use in our services. In this post, I talk about how we can leverage the power of GraphQL to prevent sensitive information ending up in these monitoring tools.
+summary: >-
+  Metrics, Logging, and Tracing are some primary forms of monitoring we use in
+  our services. In this post, I talk about how we can leverage the power of
+  GraphQL to prevent sensitive information ending up in these monitoring tools.
+images:
+  - /static/blog/how-to-avoid-logging-sensitive-data-in-graphql/twitter-card.png
 ---
 
 In this post, we will focus on the declarative nature of GraphQL to solve the leakage of sensitive data to monitoring tools. Metrics collection, Logging, and Tracing are some primary forms of monitoring we implement in all services. In the logs, traces, or metrics, we want enough information to understand failures so that we are able to fix the bugs that caused those failures.
