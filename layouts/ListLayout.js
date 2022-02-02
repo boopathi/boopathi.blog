@@ -61,7 +61,7 @@ export default function ListLayout({
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!displayPosts.length && 'No posts found.'}
           {displayPosts.map((frontMatter) => {
-            const { slug, date, title, summary, tags } = frontMatter
+            const { slug, date, title, summary, tags, readingTime } = frontMatter
             return (
               <li key={slug} className="py-12">
                 <article>
@@ -70,6 +70,11 @@ export default function ListLayout({
                       <dt className="sr-only">Published on</dt>
                       <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                         <time dateTime={date}>{formatDate(date)}</time>
+                      </dd>
+
+                      <dt className="sr-only">Reading Time</dt>
+                      <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                        <span>{Math.round(readingTime.minutes)} min read</span>
                       </dd>
                     </dl>
                     <div className="space-y-5 xl:col-span-3">
