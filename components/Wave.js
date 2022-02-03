@@ -6,8 +6,8 @@
 export default function Wave() {
   return (
     <>
-      <div className="h-24 bg-sky-200 dark:bg-sky-900 absolute -z-10 min-w-full"></div>
-      <div className="top-24 bg-sky-200 dark:bg-sky-900 absolute min-w-full -z-10 ">
+      <div className="h-24 bg-sky-200 dark:bg-sky-900 absolute -z-10 min-w-full print:hidden"></div>
+      <div className="top-24 bg-sky-200 dark:bg-sky-900 absolute min-w-full -z-10 print:hidden">
         <svg
           className="relative w-full h-32 min-h-[100px] max-h-[150px]"
           viewBox="0 24 150 28"

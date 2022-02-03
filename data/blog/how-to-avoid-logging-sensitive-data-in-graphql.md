@@ -187,9 +187,6 @@ Fortunately, there is a simpler alternative -- i.e., to use `validate` function.
 
 The complete implementation using GraphQL-JS would look like this --
 
-<details>
-<summary>Click to expand</summary>
-
 ```ts
 import { GraphQLSchema, DocumentNode, validate } from 'graphql'
 
@@ -213,14 +210,9 @@ function getSensitiveVariables(document: DocumentNode, schema: GraphQLSchema) {
 }
 ```
 
-</details>
-
 ### `getLoggableVariables`
 
 Now, we have the list of sensitive variables. While logging, we can use this list to remove all the sensitive variables just before logging. An example implementation of the logger --
-
-<details>
-<summary>Click to expand</summary>
 
 ```ts
 type Variables = {
@@ -241,8 +233,6 @@ function getLoggableVariables(variables: Variables, sensitive: string[]) {
   return
 }
 ```
-
-</details>
 
 ### Enforcing `@sensitive` heuristics
 
