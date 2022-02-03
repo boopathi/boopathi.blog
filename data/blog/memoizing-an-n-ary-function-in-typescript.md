@@ -273,7 +273,7 @@ It was an interesting journey trying to solve a simple-to-understand problem, bu
 
 If you have any doubts or comments or questions or fixes for this post, please feel free to tweet to me at [@heisenbugger](https://twitter.com/heisenbugger).
 
-[lodash_memoize]: https://lodash.com/docs/#memoize
+[lodash_memoize]: https://lodash.com/docs/4.17.15#memoize
 [graphql]: https://graphql.org
 [ast]: https://en.wikipedia.org/wiki/Abstract_syntax_tree
 [jit_resolve_info]: https://github.com/zalando-incubator/graphql-jit/blob/main/src/resolve-info.ts
