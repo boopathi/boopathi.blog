@@ -5,7 +5,7 @@ tags:
   - TypeScript
   - JavaScript
   - Optimization
-draft: true
+draft: false
 summary: >-
   In this post, I talk about an approach to memoizing a n-ary function in
   JavaScript / TypeScript preserving the flow of types.
