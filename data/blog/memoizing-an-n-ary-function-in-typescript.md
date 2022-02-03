@@ -83,7 +83,7 @@ It's not realistic to assume that all our function calls share the same space in
 
 ### Stringify
 
-_Can we stringify the input as string equality check is by value instead of reference?_ As you might have already realized, this has its own drawbacks. There is also an extra parse step that must happen inside the function implementation. It can become counterproductive, as stringify and then parse will cost more computation in the process we are trying to optimize.
+_Can we stringify the input as string equality check is 'by value' instead of reference?_ As you might have already realized, this has its own drawbacks. There is also an extra parse step that must happen inside the function implementation. It can become counterproductive, as stringify and then parse will cost more computation in the process we are trying to optimize.
 
 Also, the order of keys in an object are not certain. It takes the insertion order. So stringifying that requires special stringify methods. Even if it's an array, the same problems occur if the n-ary input contains objects or arrays.
 
