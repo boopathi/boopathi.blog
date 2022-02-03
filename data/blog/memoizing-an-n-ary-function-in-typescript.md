@@ -51,7 +51,7 @@ In this example, if we were to use two inputs, how would we store the result? Wo
 
 ### Just wrap the inputs in an array or object
 
-Let's consider combining the inputs into an array or an object to make it a single input. As a JavaScript developer, we immediately know why creating that wrapper object or array would not work as the key of a map. They are passed by reference. Every time the function executes, a `{}` or `[]` syntax creates a new object, and the `map.has(obj)` check will fail.
+Let's consider combining the inputs into an array or an object to make it a single input. As JavaScript developers, we immediately know why creating that wrapper object or array would not work as the key of a map. They are passed by reference. Every time the function executes, a `{}` or `[]` syntax creates a new object, and the `map.has(obj)` check will fail.
 
 To check the memo works, we can introduce a side effect in the original function.
 
