@@ -6,10 +6,10 @@
 export default function Wave() {
   return (
     <>
-      <div className="h-24 bg-sky-200 dark:bg-sky-900 absolute -z-10 min-w-full print:hidden"></div>
-      <div className="top-24 bg-sky-200 dark:bg-sky-900 absolute min-w-full -z-10 print:hidden">
+      <div className="absolute -z-10 h-24 min-w-full bg-sky-200 dark:bg-sky-900 print:hidden"></div>
+      <div className="absolute top-24 -z-10 min-w-full bg-sky-200 dark:bg-sky-900 print:hidden">
         <svg
-          className="relative w-full h-32 min-h-[100px] max-h-[150px]"
+          className="relative h-32 max-h-[150px] min-h-[100px] w-full"
           viewBox="0 24 150 28"
           preserveAspectRatio="none"
           shapeRendering="auto"
