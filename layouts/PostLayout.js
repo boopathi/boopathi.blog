@@ -135,9 +135,8 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                       {tags.map((tag, i) => (
                         <>
                           {i !== 0 ? (
-                            <span key={tag} className="px-2">
-                              {' '}
-                              ·{' '}
+                            <span key={tag} className="my-1 px-2">
+                              ·
                             </span>
                           ) : null}
                           <Tag key={tag} text={tag} />
@@ -148,9 +147,9 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                 )}
 
                 {(next || prev) && (
-                  <div className="flex justify-between py-4 ">
+                  <div className="flex flex-col justify-between py-4 md:flex-row">
                     {prev && (
-                      <div>
+                      <div className="my-2">
                         <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
                           Previous Article
                         </h2>
@@ -160,7 +159,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                       </div>
                     )}
                     {next && (
-                      <div>
+                      <div className="my-2 text-right md:text-left">
                         <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
                           Next Article
                         </h2>
