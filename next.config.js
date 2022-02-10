@@ -10,7 +10,7 @@ const ContentSecurityPolicy = `
   img-src * blob: data: www.googletagmanager.com;
   media-src 'none';
   connect-src *;
-  font-src 'self' fonts.gstatic.com cdn.jsdelivr.net;
+  font-src 'self' cdn.jsdelivr.net;
   frame-src giscus.app
 `
 
