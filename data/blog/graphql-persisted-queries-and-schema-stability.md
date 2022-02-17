@@ -15,6 +15,8 @@ images:
 
 Welcome to yet another post about GraphQL. In this post, I cover the topics — GraphQL persisted queries at Zalando and how we define and think about different levels of stability of our GraphQL schema.
 
+Cross posted - https://engineering.zalando.com/posts/2022/02/graphql-persisted-queries-and-schema-stability.html
+
 ## Persisted Queries
 
 Persisted Queries in GraphQL are like stored procedures in Databases. If you want to know about the Apollo's way of automated persisted queries, please follow their [documentation here](https://www.apollographql.com/docs/apollo-server/performance/apq/). At Zalando, we took a different approach - **to disable GraphQL in production**. It might sound counter intuitive at first — we have a GraphQL service but we disable GraphQL in production — why?
