@@ -54,10 +54,16 @@ const securityHeaders = [
 
 module.exports = withBundleAnalyzer({
   reactStrictMode: true,
+  experimental: {
+    serverComponents: true,
+    runtime: 'nodejs',
+  },
+  swcMinify: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   eslint: {
     dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
   },
+
   async headers() {
     return [
       {
@@ -66,6 +72,7 @@ module.exports = withBundleAnalyzer({
       },
     ]
   },
+
   webpack: (config, { dev, isServer }) => {
     config.module.rules.push({
       test: /\.(png|jpe?g|gif|mp4)$/i,
