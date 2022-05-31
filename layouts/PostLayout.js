@@ -7,7 +7,6 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import Comments from '@/components/comments'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
-import { Fragment } from 'react'
 
 const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
 const discussUrl = (slug) =>
@@ -134,14 +133,14 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                     </h2>
                     <div className="flex flex-wrap">
                       {tags.map((tag, i) => (
-                        <Fragment key={tag}>
+                        <>
                           {i !== 0 ? (
-                            <span key={i} className="my-1 px-2">
+                            <span key={tag} className="my-1 px-2">
                               ·
                             </span>
                           ) : null}
                           <Tag key={tag} text={tag} />
-                        </Fragment>
+                        </>
                       ))}
                     </div>
                   </div>
