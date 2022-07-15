@@ -1,9 +1,9 @@
 /* eslint-disable react/display-name */
 import { useMemo } from 'react'
 import { getMDXComponent } from 'mdx-bundler/client'
-import Image from './Image'
+import Image from './Image.server'
 import CustomLink from './Link'
-import TOCInline from './TOCInline'
+import TOCInline from './TOCInline.server'
 import Pre from './Pre'
 import { BlogNewsletterForm } from './NewsletterForm'
 
@@ -14,7 +14,7 @@ export const MDXComponents = {
   pre: Pre,
   BlogNewsletterForm: BlogNewsletterForm,
   wrapper: ({ components, layout, ...rest }) => {
-    const Layout = require(`../layouts/${layout}`).default
+    const Layout = require(`../layouts/${layout}.server.js`).default
     return <Layout {...rest} />
   },
 }

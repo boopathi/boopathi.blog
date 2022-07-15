@@ -1,8 +1,8 @@
-import { PageSEO } from '@/components/SEO'
+import { PageSEO } from '@/components/SEO.server'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
-import ListLayout from '@/layouts/ListLayout'
-import { POSTS_PER_PAGE } from '../'
+import ListLayout from '@/layouts/ListLayout.server'
+import { POSTS_PER_PAGE } from '..'
 
 export async function getStaticPaths() {
   const totalPosts = await getAllFilesFrontMatter('blog')

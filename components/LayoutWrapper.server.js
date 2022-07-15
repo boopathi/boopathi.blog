@@ -2,11 +2,11 @@ import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 import Logo from '@/data/logo.svg'
 import Link from './Link'
-import SectionContainer from './SectionContainer'
-import Footer from './Footer'
+import SectionContainer from './SectionContainer.server'
+import Footer from './Footer.server'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
-import Wave from './Wave'
+import Wave from './Wave.server'
 
 const LayoutWrapper = ({ children }) => {
   return (

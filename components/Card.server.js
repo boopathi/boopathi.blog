@@ -1,4 +1,4 @@
-import Image from './Image'
+import Image from './Image.server'
 import Link from './Link'
 
 const Card = ({ title, description, imgSrc, href }) => (

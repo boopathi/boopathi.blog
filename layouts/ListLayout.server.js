@@ -1,8 +1,8 @@
 import Link from '@/components/Link'
-import Tag from '@/components/Tag'
+import Tag from '@/components/Tag.server'
 import siteMetadata from '@/data/siteMetadata'
 import { useState } from 'react'
-import Pagination from '@/components/Pagination'
+import Pagination from '@/components/Pagination.server'
 import formatDate from '@/lib/utils/formatDate'
 
 export default function ListLayout({

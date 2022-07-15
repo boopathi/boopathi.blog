@@ -1,6 +1,6 @@
 import Link from '@/components/Link'
-import { PageSEO } from '@/components/SEO'
-import Tag from '@/components/Tag'
+import { PageSEO } from '@/components/SEO.server'
+import Tag from '@/components/Tag.server'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllTags } from '@/lib/tags'
 import kebabCase from '@/lib/utils/kebabCase'
