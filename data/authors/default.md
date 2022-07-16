@@ -1,6 +1,6 @@
 ---
 name: Boopathi Rajaa
-avatar: /static/images/avatar.png
+avatar: /static/images/avatar.jpg
 occupation: Software Engineer
 company: Zalando
 email: me@boopathi.blog

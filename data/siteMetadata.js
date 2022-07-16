@@ -8,7 +8,7 @@ const siteMetadata = {
   siteUrl: 'https://boopathi.blog',
   siteRepo: 'https://github.com/boopathi/blog-2',
   siteLogo: '/static/images/logo.png',
-  image: '/static/images/avatar.png',
+  image: '/static/images/avatar.jpg',
   socialBanner: '/static/images/twitter-card.png',
   email: 'me@boopathi.blog',
   github: 'https://github.com/boopathi',
