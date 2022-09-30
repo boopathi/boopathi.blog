@@ -85,7 +85,7 @@ directive @foo on LOCATION_IN_FIRST_COLUMN
 ```
 
 | Directive Location  | Example                        |
-| ------------------- | ------------------------------ |
+| :------------------ | :----------------------------- |
 | QUERY               | `query name @foo {}`           |
 | MUTATION            | `mutation name @foo {}`        |
 | SUBSCRIPTION        | `subscription name @foo {}`    |
