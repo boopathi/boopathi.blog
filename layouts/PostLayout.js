@@ -2,7 +2,7 @@ import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import { BlogSEO } from '@/components/SEO'
-import FutureImage from 'next/future/image'
+import Image from 'next/image'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import Comments from '@/components/comments'
@@ -66,7 +66,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                   {authorDetails.map((author) => (
                     <li className="flex items-center space-x-2" key={author.name}>
                       {author.avatar && (
-                        <FutureImage
+                        <Image
                           src={author.avatar}
                           width={38}
                           height={38}
@@ -135,11 +135,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                     <div className="flex flex-wrap">
                       {tags.map((tag, i) => (
                         <React.Fragment key={tag}>
-                          {i !== 0 ? (
-                            <span key={tag} className="my-1 px-2">
-                              ·
-                            </span>
-                          ) : null}
+                          {i !== 0 ? <span className="my-1 px-2">·</span> : null}
                           <Tag key={tag} text={tag} />
                         </React.Fragment>
                       ))}
