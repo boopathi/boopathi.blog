@@ -13,6 +13,7 @@ const siteMetadata = {
   email: 'me@boopathi.blog',
   github: 'https://github.com/boopathi',
   twitter: 'https://twitter.com/heisenbugger',
+  mastodon: 'https://mastodon.social/@boopathi',
   locale: 'en-US',
   analytics: {
     googleAnalyticsId: 'G-BNY4D028GG', // e.g. UA-000000-2 or G-XXXXXXX
