@@ -14,10 +14,18 @@ const CustomLink = ({ href, children, ...rest }) => {
   }
 
   if (isAnchorLink) {
-    return <a href={href} {...rest} />
+    return (
+      <a href={href} {...rest}>
+        {children}
+      </a>
+    )
   }
 
-  return <a target="_blank" rel="noopener noreferrer" href={href} {...rest} />
+  return (
+    <a target="_blank" rel="noopener noreferrer" href={href} {...rest}>
+      {children}
+    </a>
+  )
 }
 
 export default CustomLink
