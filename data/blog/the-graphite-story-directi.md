@@ -6,7 +6,10 @@ tags:
   - devops
 draft: false
 summary: >-
-  At Directi, we use graphite as one of our principal monitoring tools. This is a post about how we improved the Graphite setup at Directi.
+  At Directi, we use graphite as one of our principal monitoring tools. This is
+  a post about how we improved the Graphite setup at Directi.
+images:
+  - /static/blog/the-graphite-story-directi/twitter-card.png
 ---
 
 At Directi, we use [graphite](https://github.com/graphite-project/graphite-web) as one of our principal monitoring tools. Initially, when Graphite set its foot into the company's monitoring system, the setup was a cinch where one server was dedicated to receive metrics data, render the graphs and serve it to the requesting users. The problem with this setup was pretty much like a talking turkey, that it hit the bottleneck when the amount of metrics sent to this server became significantly high. This'd result in carbon-relay and carbon-cache instances on the system consuming a lot of CPU and Memory leaving not much resources available for the webapp and WSGI Daemon to use. This indubitably resulted in performance issues with rendering the graphs. It literally took a minute to render each graph. And when we perform some functions(provided by graphite) over the graph data, it'd almost take a minute and a half or more to render the graph. I'd have a coffee-break in the time my dashboard loads.
